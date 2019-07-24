@@ -117,10 +117,10 @@ class RenderLayout extends RenderBox with ContainerRenderObjectMixin<RenderBox, 
   bool hitTestChildren(BoxHitTestResult result, { Offset position }) {
     RenderBox child = firstChild;
     while (child != null) {
-      final TextParentData textParentData = child.parentData;
+      final PageParentData textParentData = child.parentData;
       //配套对应，将触摸反馈点也进行平移
       final Matrix4 transform = Matrix4.translationValues(textParentData.offset.dx, textParentData.offset.dy, 0.0)
-        ..scale(textParentData.scale, textParentData.scale, textParentData.scale);
+        ..scale(1.0, 1.0, 1.0);
       final bool isHit = result.addWithPaintTransform(
         transform: transform,
         position: position,
